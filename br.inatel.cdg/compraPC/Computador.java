@@ -42,8 +42,9 @@ public class Computador {
     }
 
     public void addHardware(int i, String nome, float capacidade){
-
-
+        if (i >= 0 && i < hb.length) {
+            this.hb[i] = new HardwareBasico(nome, capacidade);
+        }
 
     }
 }
