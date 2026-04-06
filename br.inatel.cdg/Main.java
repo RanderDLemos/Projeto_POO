@@ -28,68 +28,20 @@ public class Main {
         matricula = entrada.nextInt();
         System.out.println();
 
+        Computador pc = null;
         int opcao = -1;
+
         while(opcao != 0){
 
-            System.out.println("Confira as promocoes disponiveis para voce: ");
-            System.out.println("[1] primeira promo: ");
-            System.out.println("- Marca: Apple");
-            System.out.println("- Preço: ");
-            System.out.println("- Pentium Core i3 (2200 Mhz)");
-            System.out.println("- 8 Gb de RAM");
-            System.out.println("- 500 Gb de HD");
-            System.out.println("- Sistema Operacional: macOS Sequoia (64)");
-            System.out.println("-----------------------------------------------------");
-            System.out.println("[2] primeira promo: ");
-            System.out.println("- Marca: Samsung");
-            System.out.println("- Preço: ");
-            System.out.println("- Pentium Core i5 (3370 Mhz)");
-            System.out.println("- 16 Gb de RAM");
-            System.out.println("- 1 Tb de HD");
-            System.out.println("- Sistema Operacional: Windows 8 (64)");
-            System.out.println("-----------------------------------------------------");
-            System.out.println("[3] primeira promo: ");
-            System.out.println("- Marca: Dell");
-            System.out.println("- Preço: ");
-            System.out.println("- Pentium Core i7 (4500 Mhz)");
-            System.out.println("- 32 Gb de RAM");
-            System.out.println("- 2 Tb de HD");
-            System.out.println("- Sistema Operacional: Windows 10 (64)");
-            System.out.println("-----------------------------------------------------");
-            System.out.println("[0] caso queira sair");
-            System.out.println("Qual opcao deseja selecionar?: ");
+            Computador.opcoesPromo(opcao, matricula);
+
             opcao = entrada.nextInt();
 
-            Computador pc = null;
+            pc = Computador.opcaoEscolhida(opcao,matricula);
 
-            switch (opcao){
-
-                case 1:
-                    pc = new Computador("Apple", 1300 + matricula, "macOS Sequoia", 64);
-                    pc.addHardware(0, "Pentium Core i3", 2200);
-                    pc.addHardware(1, "RAM", 8);
-                    pc.addHardware(2, "HD", 500);
-                    pc.addMemoriaUSB(new MemoriaUSB("Pendrive", 16));
-                    break;
-                case 2:
-                    pc = new Computador("Samsung", 2200 + matricula, "Windows 8", 64);
-                    pc.addHardware(0, "Pentium Core i5", 3370);
-                    pc.addHardware(1, "RAM", 16);
-                    pc.addHardware(2, "HD", 1000);
-                    pc.addMemoriaUSB(new MemoriaUSB("Pendrive", 32));
-                    break;
-                case 3:
-                    pc = new Computador("Dell", 4800 + matricula, "Windows 10", 64);
-                    pc.addHardware(0, "Pentium Core i7", 4500);
-                    pc.addHardware(1, "RAM", 32);
-                    pc.addHardware(2, "HD", 2000);
-                    pc.addMemoriaUSB(new MemoriaUSB("HD Externo", 1000));
-                    break;
-            }
             if(pc != null){
                 cliente.comprar(pc);
                 System.out.println("PC adicionado ao carrinho!");
-
             }
 
         }
